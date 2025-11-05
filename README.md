@@ -18,7 +18,7 @@ This template is perfect for:
 
 ## 🕹️ Live Demo
 
-> 🟢 **View Demo:** [https://cyberthirty30.github.io/HackerBlackHat](https://cyberthirty30.github.io/.github.io/HackerBlackHat)
+> 🟢 **View Demo:** [https://cyberthirty30.github.io/HackerBlackHat](https://cyberthirty30.github.io/HackerBlackHat/)
 
 
 ---
