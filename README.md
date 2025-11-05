@@ -1,4 +1,4 @@
-# 💻 HackerBlackHat — Cyber Portfolio Template
+# 💻 HackerBlackHat — Portfolio Template
 
 > A futuristic hacker-themed portfolio built with **React**, **TailwindCSS**, and **VT323** — designed for cybersecurity enthusiasts, ethical hackers, developers, and creators who want to showcase their skills in a clean, terminal-inspired aesthetic.
 
