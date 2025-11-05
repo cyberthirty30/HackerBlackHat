@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> name here :: Portfolio</title>
+    
+    <!-- Google Font: VT323 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load React & Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Tailwind with custom styles -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hacker-green': '#0ac647',
+                        'hacker-gray': '#999999',
+                        'hacker-red': '#ff004f',
+                        'hacker-bg': '#0a0a0a', // A slightly off-black
+                    },
+                    fontFamily: {
+                        'hacker': ['VT323', 'monospace'],
+                    },
+                    animation: {
+                        blink: 'blink 1.2s step-end infinite',
+                        scan: 'scan 7s linear infinite',
+                        fadeIn: 'fadeIn 1s ease-in-out',
+                    },
+                    keyframes: {
+                        blink: {
+                            'from, to': { color: 'transparent' },
+                            '50%': { color: '#0ac647' },
+                        },
+                        scan: {
+                            '0%': { transform: 'translateY(-50%)', opacity: 0 },
+                            '10%': { transform: 'translateY(0%)', opacity: 0.1 },
+                            '90%': { transform: 'translateY(100%)', opacity: 0.1 },
+                            '100%': { transform: 'translateY(150%)', opacity: 0 },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: 0, transform: 'translateY(10px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Apply the custom font to the body */
+        body {
+            font-family: 'VT323', monospace;
+            background-color: #0a0a0a;
+            /* Simple overlay for CRT effect */
+            background-image: linear-gradient(rgba(0,0,0,0.3) 1px, transparent 1px);
+            background-size: 1px 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- This is where the React app will be mounted -->
+    <div id="root"></div>
+
+    <!-- The React Application (written in JSX) -->
+    <script type="text/babel">
+        const aboutItems = [
+            { icon: '😎', text: 'Security Enthusiast' },
+            { icon: '👑', text: "Competes in TryHackMe's KOTH" },
+            { icon: '⚔️', text: 'Battles in HackTheBox Battlegrounds' },
+            { icon: '🏁', text: 'Participates in CTFs' },
+            { icon: '⚡', text: 'Constantly learning, coding, designing, mixing, and mastering' },
+        ];
+        
+        const socialLinks = [
+            { name: 'Twitter (X)', url: 'https://x.com/ybksniper', icon: 'X' },
+            { name: 'YouTube', url: 'https://www.youtube.com/@ybksniper', icon: 'YT' },
+            { name: 'Instagram', url: 'https://instagram.com/ybksniper', icon: 'IG' },
+        ];
+        
+        // --- NEW RESUME DATA ---
+        const resumeData = {
+            security: [
+                'Penetration Testing (Web, Network)', 
+                'Reverse Engineering (Ghidra, IDA)', 
+                'Binary Exploitation (pwn)',
+                'Digital Forensics',
+                'Metasploit Framework',
+                'Nmap, Wireshark, Burp Suite'
+            ],
+            development: [
+                'Python, C++, JavaScript, PHP, Go',
+                'React (Native, Web), TailwindCSS',
+                'Node.js, Electron, Vite',
+                'SQL, Bash Scripting'
+            ],
+            creative: [
+                'FL Studio, Pro Tools (Audio Engineering)',
+                'Blender (3D Modeling, Animation)',
+                'JUCE (Audio Plugin Development)',
+                'Figma, Adobe Suite (UX/UI Design)'
+            ],
+            systems: [
+                'Kali Linux, ParrotSec OS, Tails',
+                'Docker, Apache',
+                'VirtualBox, VMWare',
+                'Android Studio'
+            ]
+        };
+
+        // --- Helper Components ---
+        const ConsolePrompt = ({ title }) => (
+            <div className="mt-8 mb-4 border-b border-hacker-green/80 pb-1">
+                <h2 className="text-hacker-green text-3xl font-hacker">
+                    <span className="text-hacker-red font-bold">$</span> {title.toUpperCase()}
+                </h2>
+            </div>
+        );
+
+        const SectionBlock = ({ children }) => (
+            <div className="p-4 border border-hacker-gray/30 mb-8 hover:border-hacker-green/80 transition-all duration-300 animate-fadeIn">
+                {children}
+            </div>
+        );
+
+        // --- Main Component ---
+        const HackerPortfolio = () => {
+            return (
+                <div className="min-h-screen bg-hacker-bg text-hacker-green font-hacker p-4 md:p-10 max-w-6xl mx-auto">
+                    
+                    <header className="text-center p-6 mb-8 relative overflow-hidden">
+                        {/* Simulated CRT Scanline Animation */}
+                        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none z-10 animate-scan"></div>
+
+                        <a href="#">
+                            <img 
+                                src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjN5eXpvbjdvb2Y3ZXgxcnppbjM3eTFtYnRpaTZjZWR6N3o2NGUzeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/bGgsc5mWoryfgKBx1u/giphy.gif" 
+                                alt="Coding Animation" 
+                                className="mx-auto w-full max-w-md mb-6 shadow-lg shadow-hacker-green/20"
+                            />
+                        </a>
+                        
+                        <h1 className="text-5xl md:text-6xl text-hacker-red uppercase mb-4 tracking-widest drop-shadow-[0_0_5px_rgba(255,0,79,0.7)]">
+                            CYBER30
+                        </h1>
+                        
+                        <img 
+                            src="https://readme-typing-svg.demolab.com?font=VT323&size=24&pause=1000&center=true&vCenter=true&width=550&lines=System+Online;%3E+Audio+Engineer;%3E+Cyber+Security+Enthusiast;%3E+Software+Developer" 
+                            alt="Typing SVG" 
+                            className="mx-auto w-full max-w-xl h-10"
+                        />
+
+                        <p className="text-hacker-gray text-lg mt-4">
+                            // Identity: John Doe
+                        </p>
+                        <p className="text-xl mt-2">
+                            Passionate about <strong className="text-hacker-red">business and technology</strong>.
+                        </p>
+                    </header>
+
+                    {/* --- ABOUT ME --- */}
+                    <SectionBlock>
+                        <ConsolePrompt title="About_Me.log" />
+                        <ul className="ml-4 text-lg space-y-2">
+                            {aboutItems.map((item, index) => (
+                                <li key={index} className="hover:translate-x-1 transition-transform">
+                                    <span className="text-hacker-red mr-2">{item.icon}</span> 
+                                    {item.text}
+                                </li>
+                            ))}
+                            <li className="text-hacker-gray mt-4">// ACCESS GRANTED - PRIVILEGE LEVEL: ROOT</li>
+                        </ul>
+                    </SectionBlock>
+                    
+                    {/* --- NEW RESUME / SKILLS SECTION --- */}
+                    <SectionBlock>
+                        <ConsolePrompt title="Resume.sh :: execute --skills" />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 text-lg">
+                            <div>
+                                <h3 className="text-hacker-red text-xl underline mb-2">SECURITY:</h3>
+                                <ul className="list-disc list-inside">
+                                    {resumeData.security.map((skill, i) => <li key={i} className="hover:text-white">{skill}</li>)}
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 className="text-hacker-red text-xl underline mb-2">DEVELOPMENT:</h3>
+                                <ul className="list-disc list-inside">
+                                    {resumeData.development.map((skill, i) => <li key={i} className="hover:text-white">{skill}</li>)}
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 className="text-hacker-red text-xl underline mb-2">CREATIVE:</h3>
+                                <ul className="list-disc list-inside">
+                                    {resumeData.creative.map((skill, i) => <li key={i} className="hover:text-white">{skill}</li>)}
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 className="text-hacker-red text-xl underline mb-2">SYSTEMS & TOOLS:</h3>
+                                <ul className="list-disc list-inside">
+                                    {resumeData.systems.map((skill, i) => <li key={i} className="hover:text-white">{skill}</li>)}
+                                </ul>
+                            </div>
+                        </div>
+                    </SectionBlock>
+
+                    {/* --- PRODUCER PORTFOLIO --- */}
+                    <SectionBlock>
+                        <ConsolePrompt title="ProducerPortfolio :: load(audio.dll)" />
+                        <div className="p-4">
+                            <h3 className="text-2xl text-hacker-red mb-4">
+                                <span className="animate-blink">_</span> Console Mixer Status: 
+                                <span className="text-hacker-green ml-2">MASTERING TRACE</span>
+                            </h3>
+                            <div className="flex flex-wrap gap-2">
+                                <img src="https://img.shields.io/badge/FL_Studio-FF7C00?style=for-the-badge&logo=flstudio&logoColor=white" alt="FL Studio" className="h-7" />
+                                <img src="https://img.shields.io/badge/Pro_Tools-6B2D84?style=for-the-badge&logo=avid&logoColor=white" alt="Pro Tools" className="h-7" />
+                                <img src="https://img.shields.io/badge/Blender-F5792A?style=for-the-badge&logo=blender&logoColor=white" alt="Blender" className="h-7" />
+            
+                            </div>
+                        </div>
+                    </SectionBlock>
+
+                    {/* --- PROFILES & SOCIAL --- */}
+                    <SectionBlock>
+                        <ConsolePrompt title="Profiles :: connect" />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <a href="https://tryhackme.com/p/cyber30" target="_blank" rel="noopener noreferrer" className="hover:scale-[1.02] transition-transform duration-300">
+                                <img src="https://tryhackme-badges.s3.amazonaws.com/cyber30.png" alt="TryHackMe Badge" className="w-full" />
+                            </a>
+                            <a href="https://app.hackthebox.com/profile/1751803" target="_blank" rel="noopener noreferrer" className="hover:scale-[1.02] transition-transform duration-300">
+                                <img src="https://www.hackthebox.com/badge/image/1751803" alt="HackTheBox Badge" className="w-full" />
+                            </a>
+                        </div>
+                        <div className="flex flex-wrap justify-center gap-4 mt-6">
+                            {socialLinks.map((link) => (
+                                <a 
+                                    key={link.name}
+                                    href={link.url} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="text-black bg-hacker-green p-2 px-4 text-xl font-bold shadow-lg border-2 border-hacker-green
+                                               hover:bg-hacker-red hover:text-white hover:border-hacker-red transition-all duration-300 
+                                               transform hover:scale-105"
+                                >
+                                    {link.name}
+                                </a>
+                            ))}
+                        </div>
+                    </SectionBlock>
+
+                    {/* --- GITHUB STATS --- */}
+                    <SectionBlock>
+                        <ConsolePrompt title="GitHub.stats :: monitor --activity" />
+                        <div className="flex flex-wrap justify-center gap-4">
+                            <img 
+                                src="https://github-readme-stats.vercel.app/api?username=cyberthirty30&show_icons=true&count_private=true&theme=transparent&title_color=999999&text_color=999999&border_color=0ac647#gh-dark-mode-only" 
+                                alt="GitHub Stats" 
+                                className="w-full md:w-[48%] border border-hacker-green/50 p-2 min-w-[300px]"
+                            />
+                            <img 
+                                src="https://github-readme-stats.vercel.app/api/top-langs/?username=cyberthirty30&langs_count=10&layout=compact&hide=HTML,CSS,SCSS&theme=transparent&title_color=999999&text_color=999999&border_color=0ac647#gh-dark-mode-only" 
+                                alt="Top Languages" 
+                                className="w-full md:w-[48%] border border-hacker-green/50 p-2 min-w-[300px]"
+                            />
+                        </div>
+                    </SectionBlock>
+
+                    <footer className="text-center mt-10 text-hacker-gray text-sm">
+                        <p>
+                            <span className="text-hacker-red">TERMINATED</span> // Session closed.
+                        </p>
+                    </footer>
+                </div>
+            );
+        };
+
+        // Mount the React app to the root div
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<HackerPortfolio />);
+
+    </script>
+</body>
+</html>
